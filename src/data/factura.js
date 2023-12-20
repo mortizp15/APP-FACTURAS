@@ -7,14 +7,14 @@ export const factura = {
         nombre: 'John',
         apellido: 'Doe',
         direccion: {
-            pais: 'ESP',
+            pais: 'España',
             ciudad: 'Toledo',
-            calle: 'Mercurio',
+            calle: 'C. Mercurio',
             numero: 29
         }
     },
     empresa: {
-        nombre: 'S.I.L Toledo',
+        nombre: 'FOM SIL',
         NIF: 1234567
     },
     objetos: [
