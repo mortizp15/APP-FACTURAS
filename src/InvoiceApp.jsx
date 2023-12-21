@@ -13,8 +13,11 @@ export const InvoiceApp = () => {
   const [ productoValue, setProductoValue ] = useState('')
   const [ precioValue, setPrecioValue ] = useState('')
   const [ cantidadValue, setCantidadValue ] = useState('')
-  const [ ivaValue, setIvaValue ] = useState('')
+  const [ ivaValue, setIvaValue ] = useState(21)
+
   const [ items, setItems ] = useState(objetos)
+
+  const [ counter, setCounter ] = useState(4)
 
 
   return (
@@ -49,27 +52,38 @@ export const InvoiceApp = () => {
               total={ total }
               totalSinIva={ totalSinIva }
             />
-            <form className="w-75" onSubmit={ e => {
+            <form className="w-50" onSubmit={ e => {
               e.preventDefault()
+
+              if(isNaN(precioValue)) {
+                alert('Error el precio no es un número (Si contiene decimales use ".")')
+                return
+              }
+              if(isNaN(cantidadValue)) {
+                alert('Error la cantidad no es un número')
+                return
+              }
+              console.log("Valor de IVA:", ivaValue)
               setItems([ ...items, { 
-                id: 4, 
+                id: counter, 
                 producto: productoValue, 
                 precio: +precioValue, 
-                cantidad: +cantidadValue, 
-                IVA: +ivaValue
+                cantidad: parseInt(cantidadValue, 10), 
+                IVA: parseInt(ivaValue, 10)
               }])
 
               setProductoValue('')
               setPrecioValue('')
               setCantidadValue('')
               setIvaValue('')
+              setCounter(counter + 1)
               
             } }>
               <h4>Añadir Producto</h4>
               <input 
                 type="text" 
                 name="producto" 
-                placeholder="Producto"
+                placeholder="Producto *"
                 value={ productoValue }
                 className="form-control mb-3 mt-3"
                 required
@@ -80,7 +94,7 @@ export const InvoiceApp = () => {
               <input 
                 type="text" 
                 name="precio" 
-                placeholder="Precio"
+                placeholder="Precio *: Debe ser un número"
                 value={ precioValue }
                 className="form-control mb-3"
                 required
@@ -91,7 +105,7 @@ export const InvoiceApp = () => {
               <input 
                 type="text" 
                 name="cantidad" 
-                placeholder="Cantidad"
+                placeholder="Cantidad *: Debe ser un número"
                 value={ cantidadValue }
                 className="form-control mb-3"
                 required
@@ -99,20 +113,24 @@ export const InvoiceApp = () => {
                   setCantidadValue(e.target.value)
                 } }
               />
-              <input 
-                type="number" 
+              <select 
                 name="IVA" 
-                placeholder="% de IVA"
-                value={ ivaValue }
                 className="form-control mb-3"
                 required
                 onChange={ e => {
+                  console.log("Valor seleccionado:", e.target.value);
                   setIvaValue(e.target.value)
                 } }
-              />
+              >
+                <option value="21">21%</option>
+                <option value="10">10%</option>
+                <option value="5">5%</option>
+                <option value="4">4%</option>
+                <option value="0">0%</option>                
+              </select>
               <input 
                 type="submit" 
-                value='Guardar'
+                value='Crear'
                 className="boton-guardar"
               />
             </form>

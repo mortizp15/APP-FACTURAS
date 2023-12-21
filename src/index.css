@@ -14,7 +14,7 @@ body {
 }
 
 .boton-guardar {
-    padding: 5px;
+    padding: 5px 10px;
     background-color: rgb(26, 80, 230);
     border: 2px solid rgb(26, 80, 230);
     color: #fff;
@@ -35,4 +35,26 @@ body {
 
 table {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.158);
+}
+
+input[type="text"], select {
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.158);
+    background-color: rgba(255, 255, 255, 0.527);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.103);
+    border-radius: 5px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+input[type="text"]:hover, select:hover {
+    border-color: rgba(129, 140, 248);
+    background-color: #fff;
+    box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+}
+
+input[type="text"]::placeholder {
+    font-weight: 500;
 }
