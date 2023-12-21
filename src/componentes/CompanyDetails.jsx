@@ -6,7 +6,7 @@ export const CompanyDetails = ({ titulo, empresa }) => {
     <>
     <h5 className="mt-4">{ titulo }</h5>
       <ul className="list-group">
-        <li className="list-group-item active">
+        <li className="list-group-item">
           <strong>Nombre:</strong> {empresa.nombre}
         </li>
         <li className="list-group-item">

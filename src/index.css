@@ -12,3 +12,27 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #dcd8e2a8;
 }
+
+.boton-guardar {
+    padding: 5px;
+    background-color: rgb(26, 80, 230);
+    border: 2px solid rgb(26, 80, 230);
+    color: #fff;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.boton-guardar:hover {
+    background-color: transparent;
+    color: rgb(26, 80, 230);
+    font-weight: 500;
+}
+
+.list-group {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.158);
+}
+
+table {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.158);
+}

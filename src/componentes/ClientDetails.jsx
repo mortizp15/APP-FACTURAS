@@ -17,7 +17,7 @@ export const ClientDetails = ({ titulo, cliente }) => {
     <>
         <h5 className="mt-4">{ titulo }</h5>
       <ul className="list-group ">
-        <li className="list-group-item active">
+        <li className="list-group-item">
           <strong>Nombre:</strong> {nombre} {apellido}
         </li>
         <li className="list-group-item">

@@ -19,25 +19,25 @@ export const factura = {
     },
     objetos: [
         {
-            id: 100,
+            id: 1,
             producto: 'NVIDIA RTX 3070 TI',
             precio: 450,
             cantidad: 5,
-            IVA: 21
+            IVA: 5,
         },
         {
-            id: 101,
+            id: 2,
             producto: 'NOCTUA NH-D15',
             precio: 119,
             cantidad: 1,
-            IVA: 21
+            IVA: 21,       
         },
         {
-            id: 102,
+            id: 3,
             producto: 'AMD RYZEN 7 5900X',
             precio: 240,
             cantidad: 1,
-            IVA: 21
+            IVA: 21,
         }
     ]
 }
