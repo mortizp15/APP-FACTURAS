@@ -22,7 +22,7 @@ export const factura = {
             id: 100,
             producto: 'NVIDIA RTX 3070 TI',
             precio: 450,
-            cantidad: 1,
+            cantidad: 5,
             IVA: 21
         },
         {
