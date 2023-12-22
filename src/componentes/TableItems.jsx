@@ -4,14 +4,14 @@ export const TableItems = ({ titulo, objetos, total, totalSinIva }) => {
 
   return (
     <>
-      <h4 className="mt-4">{ titulo }</h4>
-      <table className="table table-striped border">
+  
+      <table className="table table-striped border mt-4">
         <thead>
           <tr>
-            <th>PRODUCTO</th>
+            <th>CONCEPTO</th>
             <th>PRECIO UNIDAD</th>
             <th>CANTIDAD</th>
-            <th>TOTAL SIN IVA</th>
+            <th>IMPORTE (SIN IVA)</th>
             <th>% IVA</th>
             <th>TOTAL</th>
           </tr>
@@ -22,17 +22,17 @@ export const TableItems = ({ titulo, objetos, total, totalSinIva }) => {
               <td>{producto}</td>
               <td>{precio} €</td>
               <td>{cantidad}</td>
-              <td>{ precio * cantidad } €</td>
+              <td>{ (precio * cantidad).toFixed(2) } €</td>
               <td>{IVA} %</td>
-              <td>{ precio * cantidad + (precio * cantidad * IVA / 100) } €</td>
+              <td>{ (precio * cantidad + (precio * cantidad * IVA / 100)).toFixed(2) } €</td>
             </tr>
           ))}
           <tr>
             <td><strong>Totales</strong></td>
             <td colSpan="2"></td>
-            <td><strong>{ totalSinIva } €</strong></td>
+            <td><strong>{ (totalSinIva).toFixed(2) } €</strong></td>
             <td colSpan="1"></td>
-            <td><strong>{ total } €</strong></td>
+            <td><strong>{ (total).toFixed(2) } €</strong></td>
           </tr>
         </tbody>
       </table>

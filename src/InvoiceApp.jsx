@@ -10,14 +10,54 @@ export const InvoiceApp = () => {
   
   const { id, concepto, formaDePago, cliente, empresa, objetos, total, totalSinIva } = getFactura();
 
-  const [ productoValue, setProductoValue ] = useState('')
-  const [ precioValue, setPrecioValue ] = useState('')
-  const [ cantidadValue, setCantidadValue ] = useState('')
-  const [ ivaValue, setIvaValue ] = useState(21)
+  const [ valuesState, setValuesState ] = useState({
+    producto: '',
+    precio: '',
+    cantidad: '',
+    IVA: 21
+  })
+
+  const { producto, precio, cantidad, IVA: iva } = valuesState
 
   const [ items, setItems ] = useState(objetos)
 
   const [ counter, setCounter ] = useState(4)
+
+  const onInputChange = ({ target: {name, value} }) => { 
+    setValuesState({
+      ...valuesState,
+      [ name ]: value
+    }) 
+  }
+
+  const onFacturaSubmit = ( e ) => {
+    e.preventDefault()
+
+    if(isNaN(precio.trim())) {
+      alert('Error el precio no es un número (Si contiene decimales usa ".")')
+      return
+    }
+    if(isNaN(cantidad.trim())) {
+      alert('Error la cantidad no es un número')
+      return
+    }
+    setItems([ ...items, { 
+      id: counter, 
+      producto: producto, 
+      precio: +precio, 
+      cantidad: parseInt(cantidad, 10),
+      IVA: parseInt(iva, 10) || 0
+    }])
+
+    setValuesState({
+      producto: '',
+      precio: '',
+      cantidad: '',
+      IVA: 21
+    })
+    setCounter(counter + 1)
+    
+  }
 
 
   return (
@@ -47,80 +87,45 @@ export const InvoiceApp = () => {
               </div>
             </div>
             <TableItems
-              titulo='Productos'
+              titulo='Concepto'
               objetos={ items }
               total={ total }
               totalSinIva={ totalSinIva }
             />
-            <form className="w-50" onSubmit={ e => {
-              e.preventDefault()
-
-              if(isNaN(precioValue)) {
-                alert('Error el precio no es un número (Si contiene decimales use ".")')
-                return
-              }
-              if(isNaN(cantidadValue)) {
-                alert('Error la cantidad no es un número')
-                return
-              }
-              console.log("Valor de IVA:", ivaValue)
-              setItems([ ...items, { 
-                id: counter, 
-                producto: productoValue.trim(), 
-                precio: +precioValue.trim(), 
-                cantidad: parseInt(cantidadValue.trim(), 10), 
-                IVA: parseInt(ivaValue.trim(), 10)
-              }])
-
-              setProductoValue('')
-              setPrecioValue('')
-              setCantidadValue('')
-              setIvaValue('')
-              setCounter(counter + 1)
-              
-            } }>
+            <form className="w-50" onSubmit={ onFacturaSubmit }>
               <h4>Añadir Producto</h4>
               <input 
                 type="text" 
                 name="producto" 
                 placeholder="Producto *"
-                value={ productoValue }
+                value={ producto }
                 className="form-control mb-3 mt-3"
                 required
-                onChange={ e => {
-                  setProductoValue(e.target.value)
-                } }
+                onChange={ onInputChange }
               />
               <input 
                 type="text" 
                 name="precio" 
                 placeholder="Precio *: Debe ser un número"
-                value={ precioValue }
+                value={ precio }
                 className="form-control mb-3"
                 required
-                onChange={ e => {
-                  setPrecioValue(e.target.value)
-                } }
+                onChange={ onInputChange }
               />
               <input 
                 type="text" 
                 name="cantidad" 
                 placeholder="Cantidad *: Debe ser un número"
-                value={ cantidadValue }
+                value={ cantidad }
                 className="form-control mb-3"
                 required
-                onChange={ e => {
-                  setCantidadValue(e.target.value)
-                } }
+                onChange={ onInputChange }
               />
               <select 
                 name="IVA" 
                 className="form-control mb-3"
                 required
-                onChange={ e => {
-                  console.log("Valor seleccionado:", e.target.value);
-                  setIvaValue(e.target.value)
-                } }
+                onChange={ onInputChange  }
               >
                 <option value="21">21%</option>
                 <option value="10">10%</option>
