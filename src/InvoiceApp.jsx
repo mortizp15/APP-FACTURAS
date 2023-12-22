@@ -66,10 +66,10 @@ export const InvoiceApp = () => {
               console.log("Valor de IVA:", ivaValue)
               setItems([ ...items, { 
                 id: counter, 
-                producto: productoValue, 
-                precio: +precioValue, 
-                cantidad: parseInt(cantidadValue, 10), 
-                IVA: parseInt(ivaValue, 10)
+                producto: productoValue.trim(), 
+                precio: +precioValue.trim(), 
+                cantidad: parseInt(cantidadValue.trim(), 10), 
+                IVA: parseInt(ivaValue.trim(), 10)
               }])
 
               setProductoValue('')
