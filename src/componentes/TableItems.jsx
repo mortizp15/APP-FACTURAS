@@ -22,17 +22,17 @@ export const TableItems = ({ titulo, objetos, total, totalSinIva }) => {
               <td>{producto}</td>
               <td>{precio} €</td>
               <td>{cantidad}</td>
-              <td>{ (precio * cantidad).toFixed(2) } €</td>
+              <td>{ (precio * cantidad) } €</td>
               <td>{IVA} %</td>
-              <td>{ (precio * cantidad + (precio * cantidad * IVA / 100)).toFixed(2) } €</td>
+              <td>{ (precio * cantidad + (precio * cantidad * IVA / 100))} €</td>
             </tr>
           ))}
           <tr>
             <td><strong>Totales</strong></td>
             <td colSpan="2"></td>
-            <td><strong>{ (totalSinIva).toFixed(2) } €</strong></td>
+            <td><strong>{ (totalSinIva) } €</strong></td>
             <td colSpan="1"></td>
-            <td><strong>{ (total).toFixed(2) } €</strong></td>
+            <td><strong>{ (total) } €</strong></td>
           </tr>
         </tbody>
       </table>
