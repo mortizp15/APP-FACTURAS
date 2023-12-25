@@ -23,6 +23,38 @@ body {
     transition: .3s;
 }
 
+.boton-descargar {
+    padding: 5px 10px;
+    background-color: rgb(238, 63, 63);
+    border: 2px solid rgb(238, 63, 63);
+    color: #fff;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.boton-eliminar {
+    padding: 5px 10px;
+    background-color: rgb(238, 63, 63);
+    border: 2px solid rgb(238, 63, 63);
+    color: #fff;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.boton-eliminar:hover {
+    background-color: transparent;
+    color: rgb(238, 63, 63);
+    font-weight: 500;
+}
+
+.boton-descargar:hover {
+    background-color: transparent;
+    color: rgb(238, 63, 63);
+    font-weight: 500;
+}
+
 .boton-guardar:hover {
     background-color: transparent;
     color: rgb(26, 80, 230);
