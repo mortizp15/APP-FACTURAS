@@ -15,14 +15,20 @@ export const ClientDetails = ({ titulo, cliente }) => {
 
   return (
     <>
-        <h5 className="mt-4">{ titulo }</h5>
-      <ul className="list-group ">
+      <ul className="list-group">
+        <li className="list-group-item">
+          <h5 className="mt-2">{ titulo }</h5>
+        </li>
         <li className="list-group-item">
           <strong>Nombre:</strong> {nombre} {apellido}
         </li>
         <li className="list-group-item">
-          <strong>Dirección:</strong> {pais} - {ciudad} - {calle} / {numero}
+          <strong>Dirección:</strong> {calle} / {numero}
         </li>
+        <li className="list-group-item">
+          <strong>Pais:</strong>  {ciudad} - {pais} 
+        </li>
+        
       </ul>
     </>
   );

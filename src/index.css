@@ -10,7 +10,9 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #dcd8e2a8;
+    background-size: cover;
+    background-image: url(./assets/Fondo.png);
+    background-repeat: no-repeat;
 }
 
 .boton-guardar {
@@ -62,31 +64,85 @@ body {
 }
 
 .list-group {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.158);
+    height: 180px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.712);
+    border-radius: 20px;
 }
+
+.list-group li {
+    background-color: rgba(37, 35, 39, 0.815);
+    color: #fff;
+    border: none;
+    height: 100%;
+}
+
+.list-group li h5 {
+    color: rgb(161, 161, 161);
+}
+
+.list-group li  {
+    color: rgb(255, 255, 255);
+}
+
 
 table {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.158);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.712);
+    background-color: rgba(37, 35, 39, 0.815);
+    border-radius: 10px;
+    width: 98%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-collapse: collapse;
 }
 
-input[type="text"], select {
+th {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.103);
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.103);
+}
+
+input[type="text"] {
     border: none;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.158);
-    background-color: rgba(255, 255, 255, 0.527);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.103);
-    border-radius: 5px;
+    border-bottom: 2px solid rgb(255, 255, 255);
+    background-color: rgb(39, 34, 48);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.548);
+    border-radius: 0;
+}
+
+.select {
+    border: none;
+    border-bottom: 2px solid rgb(255, 255, 255);
+    background-color: rgb(39, 34, 48);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.548);
+    border-radius: 0;
+    color: #fff;
 }
 
 input[type="text"]:focus {
     outline: none;
+    background-color: transparent;
 }
 
 input[type="text"]:hover, select:hover {
     border-color: rgba(129, 140, 248);
-    background-color: #fff;
     box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
 }
 
 input[type="text"]::placeholder {
     font-weight: 500;
+    color: white;
 }
+
+.card {
+    background-color: rgb(27, 26, 29);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.185);
+}
+
+

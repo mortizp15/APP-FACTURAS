@@ -81,7 +81,7 @@ export const FormItemsView = ({ handler }) => {
         <select
           name="IVA"
           value={IVA}
-          className="form-control mb-3"
+          className="form-control mb-3 select"
           required
           onChange={onInputChange}
         >

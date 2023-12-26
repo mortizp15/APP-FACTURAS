@@ -9,6 +9,7 @@ import { Details } from "./componentes/InvoiceDetails";
 import { TableItems } from "./componentes/TableItems";
 import { useEffect, useState } from "react";
 import { FormItemsView } from "./componentes/FormItemsView";
+import { generatePDF } from "./helpers/getPdf";
 
 const facturaInicial = {
   id: 0,
@@ -49,7 +50,7 @@ export const InvoiceApp = () => {
   const [items, setItems] = useState([]);
 
   // Desestructuracion de la factura (objeto facturaInicial delcarado por defecto)
-  const { id, concepto, formaDePago, cliente, empresa } = factura;
+  const { id, concepto, formaDePago, fecha, cliente, empresa } = factura;
 
   // Obtener la factura
   useEffect(() => {
@@ -82,8 +83,8 @@ export const InvoiceApp = () => {
   };
 
   const handlerDelete = (id) => {
-    setItems(items.filter( item => item.id !== id ))
-  }
+    setItems(items.filter((item) => item.id !== id));
+  };
 
   const onActivarForm = () => {
     setActive(!active);
@@ -92,53 +93,68 @@ export const InvoiceApp = () => {
   return (
     <>
       <div className="container">
-        <div className="card mt-3">
-          <div className="card-header">Ejemplo Factura</div>
-          <div className="card-body">
-            <Details id={id} concepto={concepto} formaDePago={formaDePago} />
-            <div className="row">
-              <div className="col">
-                <ClientDetails cliente={cliente} titulo="Datos del cliente" />
+          <div className="card mt-3">
+            <div className="card-header">Factura</div>
+            <div className="card-body">
+              <div className="d-flex align-items-center justify-content-center">
+                <div className="row w-100">
+                  <div className="col">
+                    <Details
+                      titulo="Datos Factura"
+                      id={id}
+                      concepto={concepto}
+                      formaDePago={formaDePago}
+                      fecha={fecha}
+                    />
+                  </div>
+                  <div className="col">
+                    <ClientDetails
+                      cliente={cliente}
+                      titulo="Datos del cliente"
+                    />
+                  </div>
+                  <div className="col">
+                    <CompanyDetails
+                      empresa={empresa}
+                      titulo="Datos de la empresa"
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="col">
-                <CompanyDetails
-                  empresa={empresa}
-                  titulo="Datos de la empresa"
+              <div className="d-flex align-items-center justify-content-center">
+                <TableItems
+                  objetos={items}
+                  total={calcTotalIva.toFixed(2)}
+                  totalSinIva={calcTotal.toFixed(2)}
+                  handlerDelete={(id) => handlerDelete(id)}
                 />
               </div>
-            </div>
-            <TableItems
-              objetos={items}
-              total={calcTotalIva.toFixed(2)}
-              totalSinIva={calcTotal.toFixed(2)}
-              handlerDelete={ id => handlerDelete(id) }
-            />
-            <div className="d-flex align-items-center justify-content-between">
-              <button className="boton-guardar" onClick={onActivarForm}>
-                {!active ? "+ Añadir Concepto" : "Volver"}
-              </button>
+              <div className="d-flex align-items-center justify-content-between">
+                <button className="boton-guardar" onClick={onActivarForm}>
+                  {!active ? "+ Añadir Concepto" : "Volver"}
+                </button>
 
-              {!active ? "" : <FormItemsView handler={handlerAddObjetos} />}
+                {!active ? "" : <FormItemsView handler={handlerAddObjetos} />}
 
-              <button className="boton-descargar">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  class="bi bi-arrow-down-circle"
-                  viewBox="0 0 19 19"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
-                  />
-                </svg>
-                {" Descargar PDF"}
-              </button>
+                <button className="boton-descargar" onClick={generatePDF}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    className="bi bi-arrow-down-circle"
+                    viewBox="0 0 19 19"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
+                    />
+                  </svg>
+                  {" Descargar PDF"}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
       </div>
     </>
   );

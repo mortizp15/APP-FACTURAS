@@ -7,7 +7,7 @@ export const factura = {
         nombre: 'John',
         apellido: 'Doe',
         direccion: {
-            pais: 'España',
+            pais: 'ESP',
             ciudad: 'Toledo',
             calle: 'C. Mercurio',
             numero: 29
@@ -15,7 +15,8 @@ export const factura = {
     },
     empresa: {
         nombre: 'FOM SIL',
-        NIF: 1234567
+        NIF: 1234567,
+        sede: 'C. Vaparaiso 4',
     },
     objetos: [
         {

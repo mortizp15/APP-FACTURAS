@@ -8,7 +8,7 @@ export const TableItems = ({ objetos, total, totalSinIva, handlerDelete }) => {
   return (
     <>
   
-      <table className="table table-striped border mt-4">
+      <table>
         <thead>
           <tr>
             <th>#</th>
