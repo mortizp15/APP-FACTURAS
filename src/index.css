@@ -127,7 +127,7 @@ input[type="text"] {
 
 input[type="text"]:focus {
     outline: none;
-    background-color: transparent;
+    background-color: rgb(231, 231, 231);
 }
 
 input[type="text"]:hover, select:hover {
