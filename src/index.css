@@ -113,7 +113,6 @@ input[type="text"] {
     background-color: rgb(39, 34, 48);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.548);
     border-radius: 0;
-    color: white;
 }
 
 .select {
